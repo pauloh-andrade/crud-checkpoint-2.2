@@ -1,7 +1,7 @@
 export default () => {
   return (
     <>
-      <h1>Editar Produtos</h1>
+      <h1>Produtos</h1>
     </>
   )
 }
