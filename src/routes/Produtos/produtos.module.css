@@ -1,0 +1,22 @@
+.tableStyle {
+    border: 2px solid #ccc;
+    width: 100%;
+    margin: auto;
+    border-collapse: collapse;
+
+    .tableHeaderStyle {
+        background-color: royalblue;
+        color: white;
+        border: 2px solid royalblue;
+    }
+
+    .tableDataStyle {
+        text-align: left;
+        border: 2px solid #ccc;
+    }
+
+    .tableLineStyle:hover {
+        background-color: #ccc;
+        cursor: pointer;
+    }
+}

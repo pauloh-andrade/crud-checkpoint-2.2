@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import App from './App.jsx'
 
 import { Home, Erro, Produtos, EditarProdutos } from './routes'
+import { InserirProduto } from './routes/InserirProduto/index.jsx'
 
 const router = createBrowserRouter([
   {
@@ -16,7 +17,8 @@ const router = createBrowserRouter([
     children: [
       { path: '/', element: <Home /> },
       { path: '/produtos', element: <Produtos /> },
-      { path: '/produtos/editar/:id', element: <EditarProdutos /> }
+      { path: '/produtos/editar/:id', element: <EditarProdutos /> },
+      { path: '/produtos/inserir/:id', element: <InserirProduto /> }
     ]
   }
 ])
