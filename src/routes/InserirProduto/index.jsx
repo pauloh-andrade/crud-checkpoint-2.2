@@ -2,16 +2,14 @@ import { useNavigate, useParams } from "react-router-dom";
 import { ListaProdutos } from "../../mocks/listaProdutos";
 import { useState } from "react";
 
-export const EditarProdutos = () => {
+export const InserirProduto = () => {
     const {id} = useParams();
 
-    document.title = "Editar Produtos " + id;
+    document.title = "Inserir Produtos " + id;
 
     const navigate = useNavigate();
 
-    const produtoRetornadoDoFiltro = ListaProdutos.filter( produto => produto.id == id )[0];
-
-    const [produto, setProduto] = useState(produtoRetornadoDoFiltro); 
+    const [produto, setProduto] = useState({}); 
 
     const handleChange = (e) => {
       const { name, value } = e.target;
@@ -20,26 +18,20 @@ export const EditarProdutos = () => {
 
     const handleSubmit = (event) =>{
       event.preventDefault();
- 
-      let indice;
- 
-      ListaProdutos.forEach((item,index)=>{
-         if(item.id == id){
-           indice = index;
-         }
-      });
 
-      ListaProdutos.splice(indice,1,produto);
+
+      ListaProdutos.push({...produto, id});
+
       navigate("/produtos");
    }
 
     return (
       <div>
-          <h1>EditarProdutos</h1>
+          <h1>Inserir Produtos</h1>
           <div>
             <form onSubmit={handleSubmit}>
               <fieldset>
-                <legend>Produto Selecionado</legend>
+                <legend>Cadastrar Produto</legend>
                 <input type="hidden" name="id" value={produto.id} onChange={handleChange}/>
                 <div>
                   <label htmlFor="idProd">Nome do Produto</label>
@@ -54,16 +46,11 @@ export const EditarProdutos = () => {
                   <input type="text" name="preco" id="idPreco" value={produto.preco} onChange={handleChange}/>
                 </div>
                 <div>
-                  <button type="submit">EDITAR</button>
+                  <button type="submit">Inserir</button>
                 </div>
               </fieldset>
             </form>
           </div>
-          <div>
-            <p>Nome : {produto.nome}</p>
-            <p>Desc : {produto.desc}</p>
-            <p>Preço : {produto.preco}</p>
-        </div>
       </div>
     )
   }
